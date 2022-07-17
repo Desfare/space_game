@@ -1,25 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import ActionTablet from './Components/ActionTablet';
+import BottomBar from './Components/BottomBar';
+import GalaxyComponent from './Components/GalaxyTablet/GalaxyTablet';
+import NewsTablet from './Components/NewsTablet';
+import PlayerTablet from './Components/PlayerTablet';
+import TopBar from './Components/TopBar';
+import { Galaxy } from './Models/Galaxy/Galaxy';
 
 function App() {
+  const [galaxy, setGalaxy] = useState(new Galaxy())
+  
+  useEffect(() => {
+    restart()
+  }, [])
+
+  function restart() {
+    const newGalaxy = new Galaxy();
+    newGalaxy.initGalaxy()
+    newGalaxy.addPlanets()
+    newGalaxy.addShip()
+    setGalaxy(newGalaxy)
+    console.log(newGalaxy.sectors)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+        <TopBar/>
+        <div className='main'>
+          <PlayerTablet/>
+          <GalaxyComponent
+            galaxy={galaxy}
+            setGalaxy={setGalaxy}
+          />
+          <ActionTablet/>
+          <NewsTablet/>
+        </div>
+        <BottomBar/>
     </div>
+    
   );
 }
 

@@ -1,0 +1,92 @@
+.galaxy_map {
+    width: 50%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10%;
+}
+
+.planet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 80%;
+    width: 100%;
+}
+
+.influenceBar {
+    height: 20%;
+    width: 100%;
+    border: 1px solid grey;
+    box-sizing: border-box;
+    display: flex;
+    justify-items: flex-start;
+}
+
+$h: 100%;
+$w: 10%;
+
+.influencePirate {
+    height: $h;
+    width: $w;
+    background: yellow;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.influenceEmpire {
+    height: $h;
+    width: $w;
+    background: red;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.influenceRepublic {
+    height: $h;
+    width: $w;
+    background: blue;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.sector {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.planetImg {
+    width: 40%;
+}
+
+.shipOnMap {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 25%;
+}
+
+.selectedSector {
+    border-radius: 50%;
+    border: 3px dashed teal;
+    animation: rotate 3s infinite linear;
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+.availableSector {
+    background: teal;
+}
